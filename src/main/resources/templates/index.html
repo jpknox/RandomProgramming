@@ -8,8 +8,10 @@
     <title>The index of my blogeroo</title>
 
     <!-- Bootstrap -->
-    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet" />
-    <!--   --><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/> -->
+    <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- StyleSheets -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css"></link>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,29 +23,35 @@
   
   
   <body>
-    <div class="container">
+		<div th:replace="fragments/navBar :: navBar"></div>
     
-    	<div class="navbar navbar-default navbar-fixed-top">
-    		<div class="container">
+    <div class="container">
+    	<div class="row">
+    		<h1 class="page-heading">A Bootstrap Blog <small>by J.P. Knox</small></h1>
     	
-    		<!-- Logo -->
-    		<div class="navbar-header">
-    			<a class="navbar-brand" href="#">My Blogeroo</a>
-    		</div>
-    		
-    		<!-- Menu Items -->
-    		<div>
-    			<ul class="nav navbar-nav">
-    				<li class="active"><a href="/myWebApp">Home</a></li>
-    			</ul>
-    		</div>
+    		<div class="col-md-8">
+    			
+    			<h2>
+    				<a href="#">Blog Post Title</a>
+    			</h2>
+    			<p><small>by <small class="lead">Author</small></small></p>
+    			<p><span class="glyphicon glyphicon-time"></span> Posted on dd/mm/yyyy</p>
+    			
+    		</div> <!-- ./column -->
     		
     		
-    		</div>
+    		
+    		<div class="col-md-4">
+    		Right column
+    		</div> <!--  ./column -->
+    		
     	</div>
-    	
-    Hello World
-    </div>
+    </div> <!--  /.container -->
+
+
+
+
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
