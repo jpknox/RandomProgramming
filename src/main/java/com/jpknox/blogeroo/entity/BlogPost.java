@@ -21,11 +21,14 @@ public class BlogPost {
 
 	private String headerImage; // Located underneath the title & subtitle.
 
+	private String author; // The author of the blog post.
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "parentBlogPost")
 	private List<BlogPostParagraph> blogPostBody; // All the div
-														// paragraphs in the
-														// body.
+													// paragraphs in the
+													// body.
 
+	
 	public BlogPost() {
 	}
 
@@ -68,6 +71,14 @@ public class BlogPost {
 		this.headerImage = headerImage;
 	}
 
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
 	public List<BlogPostParagraph> getBlogPostBody() {
 		return blogPostBody;
 	}
@@ -76,18 +87,11 @@ public class BlogPost {
 		this.blogPostBody = blogPostBody;
 	}
 
-	
 	@Override
 	public String toString() {
 		String stringForm = title + ", " + subtitle;
-		
-		
-		
-//		for (BlogPostParagraph blogPostParagraph : blogPostBody) {
-//			stringForm += blogPostParagraph.toString() + "\n";
-//		}
-		
+
 		return stringForm;
 	}
-	
+
 }

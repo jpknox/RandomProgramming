@@ -27,45 +27,51 @@
 	<div th:replace="fragments/navBar :: navBar"></div>
 
 	<div class="container">
-		<div class="row">
-			<h1 class="page-heading">
-				A Bootstrap Blog <small>by J.P. Knox</small>
-			</h1>
+		<section>
+			<div class="row">
+				<h1 class="page-heading">
+					A Bootstrap Blog <small>by J.P. Knox</small>
+				</h1>
 
-			<div class="col-md-8" style="background-color: yellow">
+				<div class="col-md-8">
 
-				<div id="blog-post" th:each="blogEntry : ${blogEntries}">
-					<h2>
-						<a href="#">Blog Post
-							Title</a>
-					</h2>
-					<p>
-						<small>by <small th:text="${blogEntry.title}" class="lead">Author</small></small>
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-time"></span> Posted on
-						dd/mm/yyyy
-					<!-- <p th:text="${#temporals.format(now, 'dd/MMM/yyyy HH:mm')}"></p>  -->
-					</p>
-					<hr />
-					<img class="img-responsive img-rounded" alt="Blog post image"
-						src="images/900x300 Placeholder.png" />
-					<hr />
-					<div th:each="paragraph : ${blogEntry.blogPostBody}">
-						<p th:text="${paragraph.text}"></p>
+					<div id="blog-post" th:each="blogEntry : ${blogEntries}">
+						<h2>
+							<p th:inline="text" href="#">[[${blogEntry.title}]] <small th:text="${blogEntry.subtitle}">Subtitle</small></p>
+						</h2>
+						<h3>
+							<p th:text="${blogEntry.subtitle}">Subtitle</p>
+						</h3>
+						<p><small th:text="'by ' + ${blogEntry.author}">Author</small></p>
+						<p>
+							<span class="glyphicon glyphicon-time"></span> Posted on
+							dd/mm/yyyy
+							<!-- <p th:text="${#temporals.format(now, 'dd/MMM/yyyy HH:mm')}"></p>  -->
+						</p>
+						
+						<hr />
+						
+						<img class="img-responsive img-rounded" alt="Blog post image"
+							src="images/900x300 Placeholder.png" />
+							
+						<hr />
+						
+						<div th:each="paragraph : ${blogEntry.blogPostBody}">
+							<p th:text="${paragraph.text}"></p>
+						</div>
 					</div>
 
 				</div>
+				<!-- ./column -->
+
+
+
+				<div class="col-md-4">Right
+					column</div>
+				<!--  ./column -->
 
 			</div>
-			<!-- ./column -->
-
-
-
-			<div class="col-md-4" style="background-color: black">Right column</div>
-			<!--  ./column -->
-
-		</div>
+		</section>
 	</div>
 	<!--  /.container -->
 

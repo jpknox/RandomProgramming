@@ -1,7 +1,7 @@
 insert into blog_post
-(id, title, subtitle)
+(id, title, subtitle, author)
 values
-(1, 'Learning Spring Boot', 'A how-to guide');
+(1, 'Learning Spring Boot', 'A how-to guide', 'Joao Paulo Knox');
 
 insert into blog_post_paragraph
 (id, text, parent_blog_post_id) values
@@ -17,9 +17,9 @@ insert into blog_post_paragraph
 
 
 insert into blog_post
-(id, title, subtitle)
+(id, title, subtitle, author)
 values
-(2, 'Building My Blog', 'A case study');
+(2, 'Building My Blog', 'A case study', 'Joao Paulo Knox');
 
 insert into blog_post_paragraph
 (id, text, parent_blog_post_id) values
