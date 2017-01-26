@@ -34,9 +34,10 @@ public class BlogerooApplication {
 	void seeAllBlogPosts() {
 		for (BlogPost blogPost: blogPostRepository.findAll()) {
 			
+			log.info("\t");
 			log.info(blogPost.toString());
 			for (BlogPostParagraph blogPostParagraph : blogPost.getBlogPostBody()) {
-				log.info(blogPostParagraph.getParagraph().toString());
+				log.info(blogPostParagraph.getText().toString());
 			}
 			log.info("\t");
 			

@@ -11,7 +11,7 @@ public class BlogPostParagraph {
 	@Id @GeneratedValue
 	private Long id;
 	
-	private String paragraphText;
+	private String text;
 	
 	@ManyToOne
 	private BlogPost parentBlogPost;
@@ -22,7 +22,7 @@ public class BlogPostParagraph {
 	
 	public BlogPostParagraph(BlogPostParagraph builtBlogPostSection) {
 		this();
-		this.paragraphText = builtBlogPostSection.getParagraph();
+		this.text = builtBlogPostSection.getText();
 	}
 
 	
@@ -34,12 +34,12 @@ public class BlogPostParagraph {
 		this.id = id;
 	}
 
-	public String getParagraph() {
-		return paragraphText;
+	public String getText() {
+		return text;
 	}
 
-	public void setParagraph(String paragraph) {
-		this.paragraphText = paragraph;
+	public void setText(String paragraph) {
+		this.text = paragraph;
 	}
 
 	public BlogPost getParentBlogPost() {
@@ -53,7 +53,7 @@ public class BlogPostParagraph {
 	
 	@Override
 	public String toString() {
-		return paragraphText + "\t";
+		return text + "\t";
 	}
 	
 	

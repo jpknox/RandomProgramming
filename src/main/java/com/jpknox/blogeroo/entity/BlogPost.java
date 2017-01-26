@@ -15,7 +15,7 @@ public class BlogPost {
 	@GeneratedValue
 	private Long id; // Unique DB identifier.
 
-	private String title; // The heading title of the blog post.
+	public String title; // The heading title of the blog post.
 
 	private String subtitle; // Will go underneath the heading title.
 
@@ -79,7 +79,7 @@ public class BlogPost {
 	
 	@Override
 	public String toString() {
-		String stringForm = title + ", " + "subtitle";
+		String stringForm = title + ", " + subtitle;
 		
 		
 		

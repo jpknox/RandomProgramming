@@ -13,7 +13,7 @@ public class BlogPostSectionBuilder {
 	
 	
 	public BlogPostSectionBuilder setParagraph1(String paragraphText) {
-		blogPostParagraph.setParagraph(paragraphText);
+		blogPostParagraph.setText(paragraphText);
 		return this;
 	}
 	

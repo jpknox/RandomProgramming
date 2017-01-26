@@ -32,9 +32,9 @@
 				A Bootstrap Blog <small>by J.P. Knox</small>
 			</h1>
 
-			<div class="col-md-8">
+			<div class="col-md-8" style="background-color: yellow">
 
-				<div id="blog-post" th:each="blogEntry : blogEntries">
+				<div id="blog-post" th:each="blogEntry : ${blogEntries}">
 					<h2>
 						<a href="#">Blog Post
 							Title</a>
@@ -45,13 +45,15 @@
 					<p>
 						<span class="glyphicon glyphicon-time"></span> Posted on
 						dd/mm/yyyy
-					<p th:text="${#temporals.format(now, 'dd/MMM/yyyy HH:mm')}"></p>
+					<!-- <p th:text="${#temporals.format(now, 'dd/MMM/yyyy HH:mm')}"></p>  -->
 					</p>
 					<hr />
 					<img class="img-responsive img-rounded" alt="Blog post image"
 						src="images/900x300 Placeholder.png" />
 					<hr />
-					<!-- <p th:each="paragraph : blogEntry"> </p> -->
+					<div th:each="paragraph : ${blogEntry.blogPostBody}">
+						<p th:text="${paragraph.text}"></p>
+					</div>
 
 				</div>
 
@@ -60,7 +62,7 @@
 
 
 
-			<div class="col-md-4">Right column</div>
+			<div class="col-md-4" style="background-color: black">Right column</div>
 			<!--  ./column -->
 
 		</div>
