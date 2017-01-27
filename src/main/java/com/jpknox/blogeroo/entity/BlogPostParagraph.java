@@ -1,5 +1,6 @@
 package com.jpknox.blogeroo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ public class BlogPostParagraph {
 	@Id @GeneratedValue
 	private Long id;
 	
+	@Column( length = 1024)
 	private String text;
 	
 	@ManyToOne
