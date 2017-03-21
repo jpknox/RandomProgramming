@@ -1,15 +1,15 @@
 package app.web;
 
+import app.services.LoggerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import jdk.nashorn.internal.objects.NativeJSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import app.services.HelloWorldService;
 import org.springframework.web.client.AsyncRestOperations;
 import org.springframework.web.client.HttpClientErrorException;
@@ -27,6 +27,9 @@ public class MainController {
 	@Autowired
 	private HelloWorldService helloWorldService;
 
+	@Autowired
+	private LoggerService loggerService;
+
 	@GetMapping("/greeting")
 	@ResponseBody
 	public String helloWorld() {
@@ -34,11 +37,17 @@ public class MainController {
 		return this.helloWorldService.getHelloMessage();
 	}
 
-	@GetMapping("/")
+	@RequestMapping(value = "/{filter}", method=RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
 	@ResponseBody
-	public String planeData() {
-		String url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?fRegS=G-";
-//		String url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json";
+	public String getPlaneData(@PathVariable String filter) {
+		String url = null;
+		if (!filter.equals("all")) {
+			System.out.println("\n\n Filter detected. \n\n");
+			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?" + filter;
+		} else {
+			System.out.println("\n\n No filter. \n\n");
+			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json";
+		}
 
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
@@ -62,8 +71,8 @@ public class MainController {
 			}
 		}
 
+		// PrettyPrint JSON
 		ObjectMapper mapper = new ObjectMapper();
-
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		Object json = null;
 		String indented = "No JSON to parse.";
@@ -73,7 +82,11 @@ public class MainController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		loggerService.println(indented);
 
+		//Format as HTML
+//		indented = indented.replace("\n", "<br>");
+		indented = "<pre>" + indented + "</pre>";
 
 		return indented;
 	}
