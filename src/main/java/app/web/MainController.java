@@ -85,7 +85,6 @@ public class MainController {
 		loggerService.println(indented);
 
 		//Format as HTML
-//		indented = indented.replace("\n", "<br>");
 		indented = "<pre>" + indented + "</pre>";
 
 		return indented;
