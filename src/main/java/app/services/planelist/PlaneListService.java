@@ -28,36 +28,14 @@ public class PlaneListService {
 	@Autowired
 	private PlaneListLoggerService planeListLoggerService;
 
+	private String url = null;
+	private ResponseEntity<String> response;
+
 	public void getPlaneData(String filter, Model model) {
-		String url = null;
-		if (!filter.equals("all")) {
-			loggerService.println("Filter detected.");
-			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?" + filter;
-		} else {
-			loggerService.println("No filter.");
-			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json";
-		}
 
-		RestTemplate restTemplate = new RestTemplate();
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("User-Agent", "Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
-		HttpEntity<String> entity = new HttpEntity<String>(headers);
-		ResponseEntity<String> response = null;
-		try {
-			response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-		} catch (HttpClientErrorException e) {
-			loggerService.println("\n\n" + e.getMessage() + "\n" + e.getResponseBodyAsString() + "\n\n");
-		}
+		checkFilter(filter);
 
-		// Redirect
-		if (response.getStatusCode().toString().equals("301")) {
-			String redirectUrl = response.getHeaders().toSingleValueMap().get("Location");
-			try {
-				response = restTemplate.exchange(redirectUrl, HttpMethod.GET, entity, String.class);
-			} catch (HttpClientErrorException e) {
-				loggerService.println("\n\n" + e.getMessage() + "\n" + e.getResponseBodyAsString() + "\n\n");
-			}
-		}
+		connect();
 
 		// Format JSON to PrettyPrint
 		ObjectMapper mapper = new ObjectMapper();
@@ -98,5 +76,37 @@ public class PlaneListService {
 		model.addAttribute("JSONPlaneData", indented);
 	}
 
+	private void checkFilter(String filter) {
+		if (!filter.equals("all")) {
+			loggerService.println("Filter detected.");
+			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?" + filter;
+		} else {
+			loggerService.println("No filter.");
+			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json";
+		}
+	}
+
+	private void connect() {
+		RestTemplate restTemplate = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("User-Agent", "Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
+		HttpEntity<String> entity = new HttpEntity<String>(headers);
+		response = null;
+		try {
+			response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+		} catch (HttpClientErrorException e) {
+			loggerService.println("\n\n" + e.getMessage() + "\n" + e.getResponseBodyAsString() + "\n\n");
+		}
+
+		// Redirect
+		if (response.getStatusCode().toString().equals("301")) {
+			String redirectUrl = response.getHeaders().toSingleValueMap().get("Location");
+			try {
+				response = restTemplate.exchange(redirectUrl, HttpMethod.GET, entity, String.class);
+			} catch (HttpClientErrorException e) {
+				loggerService.println("\n\n" + e.getMessage() + "\n" + e.getResponseBodyAsString() + "\n\n");
+			}
+		}
+	}
 
 }
