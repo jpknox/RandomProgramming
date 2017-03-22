@@ -31,11 +31,11 @@ public class PlaneListService {
 	public void getPlaneData(String filter, Model model) {
 		String url = null;
 		if (!filter.equals("all")) {
-			System.out.println("\n\n Filter detected. \n\n");
-			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftListPojo.json?" + filter;
+			loggerService.println("Filter detected.");
+			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?" + filter;
 		} else {
-			System.out.println("\n\n No filter. \n\n");
-			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftListPojo.json";
+			loggerService.println("No filter.");
+			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json";
 		}
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -51,9 +51,9 @@ public class PlaneListService {
 
 		// Redirect
 		if (response.getStatusCode().toString().equals("301")) {
-			url = response.getHeaders().toSingleValueMap().get("Location");
+			String redirectUrl = response.getHeaders().toSingleValueMap().get("Location");
 			try {
-				response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+				response = restTemplate.exchange(redirectUrl, HttpMethod.GET, entity, String.class);
 			} catch (HttpClientErrorException e) {
 				loggerService.println("\n\n" + e.getMessage() + "\n" + e.getResponseBodyAsString() + "\n\n");
 			}
