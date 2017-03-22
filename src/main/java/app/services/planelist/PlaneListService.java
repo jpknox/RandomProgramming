@@ -82,12 +82,18 @@ public class PlaneListService {
 				loggerService.println("Aircraft list is null.");
 			}
 
-
+			//Count each model of aircraft
 			Map<String, Long> aircraftByType =
 					aircraftList.getAircraft().stream()
 							.collect(Collectors.groupingBy(a -> a.getMdl(), Collectors.counting()));
 
-			loggerService.println("Aircraft grouped by type: " + aircraftByType);
+			loggerService.println("Aircraft grouped by type:");
+			for (Map.Entry<String, Long> entry : aircraftByType.entrySet()) {
+				System.out.println(entry.getKey() + "=" + entry.getValue());
+			}
+			loggerService.println("List end.");
+
+			
 
 
 		} catch (IOException e) {
