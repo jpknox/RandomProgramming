@@ -13,25 +13,25 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
 		"src",
-		"feeds",
+		"feedPojos",
 		"srcFeed",
 		"showSil",
 		"showFlg",
 		"showPic",
 		"flgH",
 		"flgW",
-		"Aircraft",
+		"AircraftPojo",
 		"totalAc",
 		"lastDv",
 		"shtTrlSec",
 		"stm"
 })
-public class AircraftList {
+public class AircraftListPojo {
 
 	@JsonProperty("src")
 	private Long src;
-	@JsonProperty("feeds")
-	private List<Feed> feeds = null;
+	@JsonProperty("feedPojos")
+	private List<FeedPojo> feedPojos = null;
 	@JsonProperty("srcFeed")
 	private Long srcFeed;
 	@JsonProperty("showSil")
@@ -45,7 +45,7 @@ public class AircraftList {
 	@JsonProperty("flgW")
 	private Long flgW;
 	@JsonProperty("acList")
-	private List<Aircraft> aircraft = null;
+	private List<AircraftPojo> aircraftPojo = null;
 	@JsonProperty("totalAc")
 	private Long totalAc;
 	@JsonProperty("lastDv")
@@ -67,14 +67,14 @@ public class AircraftList {
 		this.src = src;
 	}
 
-	@JsonProperty("feeds")
-	public List<Feed> getFeeds() {
-		return feeds;
+	@JsonProperty("feedPojos")
+	public List<FeedPojo> getFeedPojos() {
+		return feedPojos;
 	}
 
-	@JsonProperty("feeds")
-	public void setFeeds(List<Feed> feeds) {
-		this.feeds = feeds;
+	@JsonProperty("feedPojos")
+	public void setFeedPojos(List<FeedPojo> feedPojos) {
+		this.feedPojos = feedPojos;
 	}
 
 	@JsonProperty("srcFeed")
@@ -137,14 +137,14 @@ public class AircraftList {
 		this.flgW = flgW;
 	}
 
-	@JsonProperty("Aircraft")
-	public List<Aircraft> getAircraft() {
-		return aircraft;
+	@JsonProperty("AircraftPojo")
+	public List<AircraftPojo> getAircraftPojo() {
+		return aircraftPojo;
 	}
 
-	@JsonProperty("Aircraft")
-	public void setAircraft(List<Aircraft> aircraft) {
-		this.aircraft = aircraft;
+	@JsonProperty("AircraftPojo")
+	public void setAircraftPojo(List<AircraftPojo> aircraftPojo) {
+		this.aircraftPojo = aircraftPojo;
 	}
 
 	@JsonProperty("totalAc")

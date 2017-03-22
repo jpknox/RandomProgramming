@@ -15,7 +15,7 @@ import java.util.Map;
 		"name",
 		"polarPlot"
 })
-public class Feed {
+public class FeedPojo {
 
 	@JsonProperty("id")
 	private Long id;

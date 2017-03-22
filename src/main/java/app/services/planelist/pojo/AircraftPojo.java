@@ -65,7 +65,7 @@ import java.util.Map;
 		"TTrk",
 		"Tag"
 })
-public class Aircraft {
+public class AircraftPojo {
 
 	@JsonProperty("Id")
 	private Long id;

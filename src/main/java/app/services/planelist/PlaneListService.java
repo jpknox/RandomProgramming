@@ -1,7 +1,7 @@
 package app.services.planelist;
 
 import app.services.LoggerService;
-import app.services.planelist.pojo.AircraftList;
+import app.services.planelist.pojo.AircraftListPojo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by jpknox on 22/03/17.
@@ -27,14 +25,17 @@ public class PlaneListService {
 	@Autowired
 	private LoggerService loggerService;
 
+	@Autowired
+	private PlaneListLoggerService planeListLoggerService;
+
 	public void getPlaneData(String filter, Model model) {
 		String url = null;
 		if (!filter.equals("all")) {
 			System.out.println("\n\n Filter detected. \n\n");
-			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?" + filter;
+			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftListPojo.json?" + filter;
 		} else {
 			System.out.println("\n\n No filter. \n\n");
-			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json";
+			url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftListPojo.json";
 		}
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -74,30 +75,21 @@ public class PlaneListService {
 		//Map JSON to Pojo's
 		mapper.disable(SerializationFeature.INDENT_OUTPUT); //TODO: Maybe remove
 		try {
-			AircraftList aircraftList = mapper.readValue(response.getBody(), AircraftList.class);
+			AircraftListPojo aircraftListPojo = mapper.readValue(response.getBody(), AircraftListPojo.class);
 
-			if (!(aircraftList.getAircraft() == null)) {
-				loggerService.println("Number of aircraft retrieved is: " + aircraftList.getAircraft().size());
+			if (!(aircraftListPojo.getAircraftPojo() == null)) {
+				loggerService.println("Number of aircraft retrieved is: " + aircraftListPojo.getAircraftPojo().size());
 			} else {
-				loggerService.println("Aircraft list is null.");
+				loggerService.println("AircraftPojo list is null.");
 			}
 
-			//Count each model of aircraft
-			Map<String, Long> aircraftByType =
-					aircraftList.getAircraft().stream()
-							.collect(Collectors.groupingBy(a -> a.getMdl(), Collectors.counting()));
+			planeListLoggerService.consoleAircraftList(aircraftListPojo);
 
-			loggerService.println("Aircraft grouped by type:");
-			for (Map.Entry<String, Long> entry : aircraftByType.entrySet()) {
-				System.out.println(entry.getKey() + "=" + entry.getValue());
-			}
-			loggerService.println("List end.");
 
-			
 
 
 		} catch (IOException e) {
-			loggerService.println("Error when mapping Aircraft JSON to Pojo.");
+			loggerService.println("Error when mapping AircraftPojo JSON to Pojo.");
 			e.printStackTrace();
 		}
 //		loggerService.println(indented);
