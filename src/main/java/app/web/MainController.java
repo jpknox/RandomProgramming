@@ -1,19 +1,12 @@
 package app.web;
 
-import app.services.LoggerService;
+import app.services.HelloWorldService;
 import app.services.planelist.PlaneListService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import app.services.HelloWorldService;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
 
 /**
  * Created by jpknox on 20/03/17.

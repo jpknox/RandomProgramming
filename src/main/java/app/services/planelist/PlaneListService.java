@@ -1,6 +1,7 @@
 package app.services.planelist;
 
 import app.services.LoggerService;
+import app.services.planelist.pojo.AircraftList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by jpknox on 22/03/17.
@@ -55,7 +58,7 @@ public class PlaneListService {
 			}
 		}
 
-		// PrettyPrint JSON
+		// Format JSON to PrettyPrint
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		Object json = null;
@@ -64,6 +67,31 @@ public class PlaneListService {
 			json = mapper.readValue(response.getBody(), Object.class);
 			indented = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
 		} catch (IOException e) {
+			loggerService.println("Error when formatting JSON for display purposes.");
+			e.printStackTrace();
+		}
+
+		//Map JSON to Pojo's
+		mapper.disable(SerializationFeature.INDENT_OUTPUT); //TODO: Maybe remove
+		try {
+			AircraftList aircraftList = mapper.readValue(response.getBody(), AircraftList.class);
+
+			if (!(aircraftList.getAircraft() == null)) {
+				loggerService.println("Number of aircraft retrieved is: " + aircraftList.getAircraft().size());
+			} else {
+				loggerService.println("Aircraft list is null.");
+			}
+
+
+			Map<String, Long> aircraftByType =
+					aircraftList.getAircraft().stream()
+							.collect(Collectors.groupingBy(a -> a.getMdl(), Collectors.counting()));
+
+			loggerService.println("Aircraft grouped by type: " + aircraftByType);
+
+
+		} catch (IOException e) {
+			loggerService.println("Error when mapping Aircraft JSON to Pojo.");
 			e.printStackTrace();
 		}
 //		loggerService.println(indented);
@@ -71,8 +99,6 @@ public class PlaneListService {
 		//Format as HTML
 		model.addAttribute("JSONPlaneData", indented);
 	}
-
-
 
 
 }

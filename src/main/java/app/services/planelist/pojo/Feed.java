@@ -5,6 +5,7 @@ package app.services.planelist.pojo;
  */
 
 import com.fasterxml.jackson.annotation.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ import java.util.Map;
 public class Feed {
 
 	@JsonProperty("id")
-	private Integer id;
+	private Long id;
 	@JsonProperty("name")
 	private String name;
 	@JsonProperty("polarPlot")
@@ -26,12 +27,12 @@ public class Feed {
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	@JsonProperty("id")
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	@JsonProperty("id")
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -5,6 +5,7 @@ package app.services.planelist.pojo;
  */
 
 import com.fasterxml.jackson.annotation.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,16 +65,16 @@ import java.util.Map;
 		"TTrk",
 		"Tag"
 })
-public class AcList {
+public class Aircraft {
 
 	@JsonProperty("Id")
-	private Integer id;
+	private Long id;
 	@JsonProperty("Rcvr")
-	private Integer rcvr;
+	private Long rcvr;
 	@JsonProperty("HasSig")
 	private Boolean hasSig;
 	@JsonProperty("Sig")
-	private Integer sig;
+	private Long sig;
 	@JsonProperty("Icao")
 	private String icao;
 	@JsonProperty("Bad")
@@ -83,17 +84,17 @@ public class AcList {
 	@JsonProperty("FSeen")
 	private String fSeen;
 	@JsonProperty("TSecs")
-	private Integer tSecs;
+	private Long tSecs;
 	@JsonProperty("CMsgs")
-	private Integer cMsgs;
+	private Long cMsgs;
 	@JsonProperty("Alt")
-	private Integer alt;
+	private Long alt;
 	@JsonProperty("GAlt")
-	private Integer gAlt;
+	private Long gAlt;
 	@JsonProperty("InHg")
 	private Double inHg;
 	@JsonProperty("AltT")
-	private Integer altT;
+	private Long altT;
 	@JsonProperty("Call")
 	private String call;
 	@JsonProperty("Lat")
@@ -101,7 +102,7 @@ public class AcList {
 	@JsonProperty("Long")
 	private Double _long;
 	@JsonProperty("PosTime")
-	private Integer posTime;
+	private Long posTime;
 	@JsonProperty("Mlat")
 	private Boolean mlat;
 	@JsonProperty("Tisb")
@@ -133,19 +134,19 @@ public class AcList {
 	@JsonProperty("Help")
 	private Boolean help;
 	@JsonProperty("Vsi")
-	private Integer vsi;
+	private Long vsi;
 	@JsonProperty("VsiT")
-	private Integer vsiT;
+	private Long vsiT;
 	@JsonProperty("WTC")
-	private Integer wTC;
+	private Long wTC;
 	@JsonProperty("Species")
-	private Integer species;
+	private Long species;
 	@JsonProperty("Engines")
 	private String engines;
 	@JsonProperty("EngType")
-	private Integer engType;
+	private Long engType;
 	@JsonProperty("EngMount")
-	private Integer engMount;
+	private Long engMount;
 	@JsonProperty("Mil")
 	private Boolean mil;
 	@JsonProperty("Cou")
@@ -155,19 +156,19 @@ public class AcList {
 	@JsonProperty("Interested")
 	private Boolean interested;
 	@JsonProperty("FlightsCount")
-	private Integer flightsCount;
+	private Long flightsCount;
 	@JsonProperty("Gnd")
 	private Boolean gnd;
 	@JsonProperty("SpdTyp")
-	private Integer spdTyp;
+	private Long spdTyp;
 	@JsonProperty("CallSus")
 	private Boolean callSus;
 	@JsonProperty("Trt")
-	private Integer trt;
+	private Long trt;
 	@JsonProperty("Year")
 	private String year;
 	@JsonProperty("TAlt")
-	private Integer tAlt;
+	private Long tAlt;
 	@JsonProperty("TTrk")
 	private Double tTrk;
 	@JsonProperty("Tag")
@@ -176,22 +177,22 @@ public class AcList {
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	@JsonProperty("Id")
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	@JsonProperty("Id")
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	@JsonProperty("Rcvr")
-	public Integer getRcvr() {
+	public Long getRcvr() {
 		return rcvr;
 	}
 
 	@JsonProperty("Rcvr")
-	public void setRcvr(Integer rcvr) {
+	public void setRcvr(Long rcvr) {
 		this.rcvr = rcvr;
 	}
 
@@ -206,12 +207,12 @@ public class AcList {
 	}
 
 	@JsonProperty("Sig")
-	public Integer getSig() {
+	public Long getSig() {
 		return sig;
 	}
 
 	@JsonProperty("Sig")
-	public void setSig(Integer sig) {
+	public void setSig(Long sig) {
 		this.sig = sig;
 	}
 
@@ -256,42 +257,42 @@ public class AcList {
 	}
 
 	@JsonProperty("TSecs")
-	public Integer getTSecs() {
+	public Long getTSecs() {
 		return tSecs;
 	}
 
 	@JsonProperty("TSecs")
-	public void setTSecs(Integer tSecs) {
+	public void setTSecs(Long tSecs) {
 		this.tSecs = tSecs;
 	}
 
 	@JsonProperty("CMsgs")
-	public Integer getCMsgs() {
+	public Long getCMsgs() {
 		return cMsgs;
 	}
 
 	@JsonProperty("CMsgs")
-	public void setCMsgs(Integer cMsgs) {
+	public void setCMsgs(Long cMsgs) {
 		this.cMsgs = cMsgs;
 	}
 
 	@JsonProperty("Alt")
-	public Integer getAlt() {
+	public Long getAlt() {
 		return alt;
 	}
 
 	@JsonProperty("Alt")
-	public void setAlt(Integer alt) {
+	public void setAlt(Long alt) {
 		this.alt = alt;
 	}
 
 	@JsonProperty("GAlt")
-	public Integer getGAlt() {
+	public Long getGAlt() {
 		return gAlt;
 	}
 
 	@JsonProperty("GAlt")
-	public void setGAlt(Integer gAlt) {
+	public void setGAlt(Long gAlt) {
 		this.gAlt = gAlt;
 	}
 
@@ -306,12 +307,12 @@ public class AcList {
 	}
 
 	@JsonProperty("AltT")
-	public Integer getAltT() {
+	public Long getAltT() {
 		return altT;
 	}
 
 	@JsonProperty("AltT")
-	public void setAltT(Integer altT) {
+	public void setAltT(Long altT) {
 		this.altT = altT;
 	}
 
@@ -346,12 +347,12 @@ public class AcList {
 	}
 
 	@JsonProperty("PosTime")
-	public Integer getPosTime() {
+	public Long getPosTime() {
 		return posTime;
 	}
 
 	@JsonProperty("PosTime")
-	public void setPosTime(Integer posTime) {
+	public void setPosTime(Long posTime) {
 		this.posTime = posTime;
 	}
 
@@ -506,42 +507,42 @@ public class AcList {
 	}
 
 	@JsonProperty("Vsi")
-	public Integer getVsi() {
+	public Long getVsi() {
 		return vsi;
 	}
 
 	@JsonProperty("Vsi")
-	public void setVsi(Integer vsi) {
+	public void setVsi(Long vsi) {
 		this.vsi = vsi;
 	}
 
 	@JsonProperty("VsiT")
-	public Integer getVsiT() {
+	public Long getVsiT() {
 		return vsiT;
 	}
 
 	@JsonProperty("VsiT")
-	public void setVsiT(Integer vsiT) {
+	public void setVsiT(Long vsiT) {
 		this.vsiT = vsiT;
 	}
 
 	@JsonProperty("WTC")
-	public Integer getWTC() {
+	public Long getWTC() {
 		return wTC;
 	}
 
 	@JsonProperty("WTC")
-	public void setWTC(Integer wTC) {
+	public void setWTC(Long wTC) {
 		this.wTC = wTC;
 	}
 
 	@JsonProperty("Species")
-	public Integer getSpecies() {
+	public Long getSpecies() {
 		return species;
 	}
 
 	@JsonProperty("Species")
-	public void setSpecies(Integer species) {
+	public void setSpecies(Long species) {
 		this.species = species;
 	}
 
@@ -556,22 +557,22 @@ public class AcList {
 	}
 
 	@JsonProperty("EngType")
-	public Integer getEngType() {
+	public Long getEngType() {
 		return engType;
 	}
 
 	@JsonProperty("EngType")
-	public void setEngType(Integer engType) {
+	public void setEngType(Long engType) {
 		this.engType = engType;
 	}
 
 	@JsonProperty("EngMount")
-	public Integer getEngMount() {
+	public Long getEngMount() {
 		return engMount;
 	}
 
 	@JsonProperty("EngMount")
-	public void setEngMount(Integer engMount) {
+	public void setEngMount(Long engMount) {
 		this.engMount = engMount;
 	}
 
@@ -616,12 +617,12 @@ public class AcList {
 	}
 
 	@JsonProperty("FlightsCount")
-	public Integer getFlightsCount() {
+	public Long getFlightsCount() {
 		return flightsCount;
 	}
 
 	@JsonProperty("FlightsCount")
-	public void setFlightsCount(Integer flightsCount) {
+	public void setFlightsCount(Long flightsCount) {
 		this.flightsCount = flightsCount;
 	}
 
@@ -636,12 +637,12 @@ public class AcList {
 	}
 
 	@JsonProperty("SpdTyp")
-	public Integer getSpdTyp() {
+	public Long getSpdTyp() {
 		return spdTyp;
 	}
 
 	@JsonProperty("SpdTyp")
-	public void setSpdTyp(Integer spdTyp) {
+	public void setSpdTyp(Long spdTyp) {
 		this.spdTyp = spdTyp;
 	}
 
@@ -656,12 +657,12 @@ public class AcList {
 	}
 
 	@JsonProperty("Trt")
-	public Integer getTrt() {
+	public Long getTrt() {
 		return trt;
 	}
 
 	@JsonProperty("Trt")
-	public void setTrt(Integer trt) {
+	public void setTrt(Long trt) {
 		this.trt = trt;
 	}
 
@@ -676,12 +677,12 @@ public class AcList {
 	}
 
 	@JsonProperty("TAlt")
-	public Integer getTAlt() {
+	public Long getTAlt() {
 		return tAlt;
 	}
 
 	@JsonProperty("TAlt")
-	public void setTAlt(Integer tAlt) {
+	public void setTAlt(Long tAlt) {
 		this.tAlt = tAlt;
 	}
 

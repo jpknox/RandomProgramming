@@ -20,7 +20,7 @@ import java.util.Map;
 		"showPic",
 		"flgH",
 		"flgW",
-		"acList",
+		"Aircraft",
 		"totalAc",
 		"lastDv",
 		"shtTrlSec",
@@ -29,11 +29,11 @@ import java.util.Map;
 public class AircraftList {
 
 	@JsonProperty("src")
-	private Integer src;
+	private Long src;
 	@JsonProperty("feeds")
 	private List<Feed> feeds = null;
 	@JsonProperty("srcFeed")
-	private Integer srcFeed;
+	private Long srcFeed;
 	@JsonProperty("showSil")
 	private Boolean showSil;
 	@JsonProperty("showFlg")
@@ -41,29 +41,29 @@ public class AircraftList {
 	@JsonProperty("showPic")
 	private Boolean showPic;
 	@JsonProperty("flgH")
-	private Integer flgH;
+	private Long flgH;
 	@JsonProperty("flgW")
-	private Integer flgW;
+	private Long flgW;
 	@JsonProperty("acList")
-	private List<AcList> acList = null;
+	private List<Aircraft> aircraft = null;
 	@JsonProperty("totalAc")
-	private Integer totalAc;
+	private Long totalAc;
 	@JsonProperty("lastDv")
 	private String lastDv;
 	@JsonProperty("shtTrlSec")
-	private Integer shtTrlSec;
+	private Long shtTrlSec;
 	@JsonProperty("stm")
-	private Integer stm;
+	private Long stm;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	@JsonProperty("src")
-	public Integer getSrc() {
+	public Long getSrc() {
 		return src;
 	}
 
 	@JsonProperty("src")
-	public void setSrc(Integer src) {
+	public void setSrc(Long src) {
 		this.src = src;
 	}
 
@@ -78,12 +78,12 @@ public class AircraftList {
 	}
 
 	@JsonProperty("srcFeed")
-	public Integer getSrcFeed() {
+	public Long getSrcFeed() {
 		return srcFeed;
 	}
 
 	@JsonProperty("srcFeed")
-	public void setSrcFeed(Integer srcFeed) {
+	public void setSrcFeed(Long srcFeed) {
 		this.srcFeed = srcFeed;
 	}
 
@@ -118,42 +118,42 @@ public class AircraftList {
 	}
 
 	@JsonProperty("flgH")
-	public Integer getFlgH() {
+	public Long getFlgH() {
 		return flgH;
 	}
 
 	@JsonProperty("flgH")
-	public void setFlgH(Integer flgH) {
+	public void setFlgH(Long flgH) {
 		this.flgH = flgH;
 	}
 
 	@JsonProperty("flgW")
-	public Integer getFlgW() {
+	public Long getFlgW() {
 		return flgW;
 	}
 
 	@JsonProperty("flgW")
-	public void setFlgW(Integer flgW) {
+	public void setFlgW(Long flgW) {
 		this.flgW = flgW;
 	}
 
-	@JsonProperty("acList")
-	public List<AcList> getAcList() {
-		return acList;
+	@JsonProperty("Aircraft")
+	public List<Aircraft> getAircraft() {
+		return aircraft;
 	}
 
-	@JsonProperty("acList")
-	public void setAcList(List<AcList> acList) {
-		this.acList = acList;
+	@JsonProperty("Aircraft")
+	public void setAircraft(List<Aircraft> aircraft) {
+		this.aircraft = aircraft;
 	}
 
 	@JsonProperty("totalAc")
-	public Integer getTotalAc() {
+	public Long getTotalAc() {
 		return totalAc;
 	}
 
 	@JsonProperty("totalAc")
-	public void setTotalAc(Integer totalAc) {
+	public void setTotalAc(Long totalAc) {
 		this.totalAc = totalAc;
 	}
 
@@ -168,22 +168,22 @@ public class AircraftList {
 	}
 
 	@JsonProperty("shtTrlSec")
-	public Integer getShtTrlSec() {
+	public Long getShtTrlSec() {
 		return shtTrlSec;
 	}
 
 	@JsonProperty("shtTrlSec")
-	public void setShtTrlSec(Integer shtTrlSec) {
+	public void setShtTrlSec(Long shtTrlSec) {
 		this.shtTrlSec = shtTrlSec;
 	}
 
 	@JsonProperty("stm")
-	public Integer getStm() {
+	public Long getStm() {
 		return stm;
 	}
 
 	@JsonProperty("stm")
-	public void setStm(Integer stm) {
+	public void setStm(Long stm) {
 		this.stm = stm;
 	}
 
