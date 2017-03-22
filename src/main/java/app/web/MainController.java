@@ -7,6 +7,7 @@ import jdk.nashorn.internal.objects.NativeJSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +39,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/{filter}", method=RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
-	@ResponseBody
-	public String getPlaneData(@PathVariable String filter) {
+	public String getPlaneData(@PathVariable String filter, Model model) {
 		String url = null;
 		if (!filter.equals("all")) {
 			System.out.println("\n\n Filter detected. \n\n");
@@ -82,12 +82,19 @@ public class MainController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		loggerService.println(indented);
+//		loggerService.println(indented);
 
 		//Format as HTML
-		indented = "<pre>" + indented + "</pre>";
+//		indented = "<pre>" + indented + "</pre>";
+		model.addAttribute("JSONPlaneData", indented);
 
-		return indented;
+		return "PlaneData";
+	}
+
+	@RequestMapping(value = "/html/{name}", method=RequestMethod.GET)
+	public String getBasepage(@PathVariable String name, Model model) {
+		model.addAttribute("name", name);
+		return "index";
 	}
 
 }
