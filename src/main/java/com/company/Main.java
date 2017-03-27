@@ -16,7 +16,6 @@ public class Main {
 		int i = 0;
 		while (scanner.hasNext()) {
 			matrix[i++] = scanner.nextInt();
-			System.out.printf("%d ", matrix[i-1]);
 		}
 
 		matrixDisplay.displayMatrix(matrix);
