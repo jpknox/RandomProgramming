@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>The index of my blogeroo</title>
+
+<!-- Bootstrap -->
+<link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+
+<!-- StyleSheets -->
+<link rel="stylesheet" type="text/css" href="css/styles.css"></link>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+	<div th:replace="fragments/navBar :: navBar"></div>
+
+	<div class="container">
+		<section>
+			<div class="row">
+				<h1 class="page-heading">
+					A Bootstrap Blog <small>by J.P. Knox</small>
+				</h1>
+
+				<div class="col-md-8">
+
+					<div id="blog-post" th:each="blogEntry : ${blogEntries}">
+						<h2>
+							<p th:inline="text" href="#">[[${blogEntry.title}]] <small th:text="${blogEntry.subtitle}">Subtitle</small></p>
+						</h2>
+						<p><small th:text="'by ' + ${blogEntry.author}">Author</small></p>
+						<p>
+							<span class="glyphicon glyphicon-time"></span> Posted on
+							dd/mm/yyyy
+							<!-- <p th:text="${#temporals.format(now, 'dd/MMM/yyyy HH:mm')}"></p>  -->
+						</p>
+						
+						<hr />
+						
+						<img class="img-responsive img-rounded" alt="Blog post image"
+							src="images/900x300 Placeholder.png" />
+							
+						<hr />
+						
+						<div th:each="paragraph : ${blogEntry.blogPostBody}">
+							<p th:text="${paragraph.text}"></p>
+						</div>
+					</div>
+
+				</div>
+				<!-- ./column -->
+
+
+
+				<div class="col-md-4">Right
+					column</div>
+				<!--  ./column -->
+
+			</div>
+		</section>
+	</div>
+	<!--  /.container -->
+
+
+
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
