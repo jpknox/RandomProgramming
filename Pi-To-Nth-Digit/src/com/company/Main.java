@@ -1,5 +1,11 @@
 package com.company;
 
+import com.company.piCalculators.NilakanthaSomayaji;
+import com.company.piCalculators.PiCalculator;
+import com.company.piDisplay.PiDisplay;
+
+import java.math.BigDecimal;
+
 public class Main {
 
 	private static final long n = 10000000000L;
@@ -7,13 +13,16 @@ public class Main {
     public static void main(String[] args) {
 
         PiCalculator piCalculator = new PiCalculator();
+		PiDisplay piDisplay = new PiDisplay();
+		piCalculator.setAlgorithm(new NilakanthaSomayaji());
+		piCalculator.setIterations(1000000L);
+
+		BigDecimal pi = piCalculator.calculate();
+		piDisplay.displayPi(pi);
 
 
-
-//       System.out.println(piCalculator.getPi());
-		System.out.println(piCalculator.getPiNilakantha(n));
-		System.out.println("3.1415926535897932");
 
 
     }
+
 }
