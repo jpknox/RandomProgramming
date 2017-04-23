@@ -32,6 +32,7 @@ public class PiDisplay {
 		System.out.println(String.format("Result of algorithm:\t%s", pi.toString()));
 		System.out.println(String.format("Accuracy:\t\t\t\t%s",  getCorrectPiCharacters(pi)));
 		System.out.println(String.format("Comparable chars:\t\t%s",  getComparablePi(pi)));
+		System.out.println();
 	}
 
 	public String getComparablePi(BigDecimal calculatedPi) {

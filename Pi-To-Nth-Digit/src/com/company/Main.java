@@ -25,9 +25,6 @@ public class Main {
 		piCalculator.setAlgorithm(new GregoryLeibnizEquation());
 		pi = piCalculator.calculate();
 		piDisplay.displayPi(pi);
-
-
-
     }
 
 }
