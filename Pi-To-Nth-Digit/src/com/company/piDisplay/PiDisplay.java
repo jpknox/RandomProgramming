@@ -29,13 +29,13 @@ public class PiDisplay {
 			"18577805321712268066130019278766111959092164201989";
 
 	public void displayPi(BigDecimal pi) {
-		System.out.println(String.format("Calculation:\t%s", pi.toString()));
-		System.out.println(String.format("Concrete:\t\t%s", getComparablePi(pi)));
+		System.out.println(String.format("Result of algorithm:\t%s", pi.toString()));
+		System.out.println(String.format("Accuracy:\t\t\t\t%s",  getCorrectPiCharacters(pi)));
+		System.out.println(String.format("Comparable chars:\t\t%s",  getComparablePi(pi)));
 	}
 
 	public String getComparablePi(BigDecimal calculatedPi) {
-		String calculatedPiString = calculatedPi.toString();
-		int length = calculatedPiString.length();
+		int length = calculatedPi.toString().length();
 
 		char[] concretePiChars = concretePi.toCharArray();
 		StringBuilder shortConcretePi = new StringBuilder();
@@ -44,6 +44,23 @@ public class PiDisplay {
 		}
 
 		return shortConcretePi.toString();
+	}
+
+	public String getCorrectPiCharacters(BigDecimal inaccuratePi) {
+		char[] inaccuratePiChars = inaccuratePi.toString().toCharArray();
+		int length = inaccuratePiChars.length;
+		char[] concretePiChars = concretePi.toCharArray();
+
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < length; i++) {
+			if (inaccuratePiChars[i] == concretePiChars[i]) {
+				stringBuilder.append(inaccuratePiChars[i]);
+			} else {
+				break;
+			}
+		}
+
+		return stringBuilder.toString();
 	}
 
 
