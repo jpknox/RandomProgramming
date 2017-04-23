@@ -1,4 +1,6 @@
-package com.company.piCalculators;
+package com.company.piCalculators.equations;
+
+import com.company.piCalculators.piGenerator;
 
 import java.math.BigDecimal;
 
@@ -9,6 +11,7 @@ public class NilakanthaSomayaji implements piGenerator {
 
 	@Override
 	public BigDecimal generatePi(long iterations) {
+		System.out.println("Inside Nilakantha's algorithm.");
 		BigDecimal pi = new BigDecimal(3.0);
 		int flag = 1;
 		long firstDenominator = 2;
@@ -17,7 +20,7 @@ public class NilakanthaSomayaji implements piGenerator {
 
 		for (int i = 1; i < iterations; i++) {
 			if (flag % 2 == 1) {
-				pi.add(
+				pi = pi.add(
 						new BigDecimal(
 							(double) 4 /(firstDenominator *
 											secondDenominator *
@@ -25,7 +28,7 @@ public class NilakanthaSomayaji implements piGenerator {
 						)
 				);
 			} else {
-				pi.subtract(
+				pi = pi.subtract(
 						new BigDecimal(
 								(double) 4 /(firstDenominator *
 										secondDenominator *

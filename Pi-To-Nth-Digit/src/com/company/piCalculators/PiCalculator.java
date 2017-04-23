@@ -1,5 +1,7 @@
 package com.company.piCalculators;
 
+import com.company.piCalculators.equations.GregoryLeibnizEquation;
+
 import java.math.BigDecimal;
 
 /**
