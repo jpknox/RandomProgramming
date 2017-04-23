@@ -12,7 +12,7 @@ public class GregoryLeibnizEquation implements piGenerator {
 	@Override
 	public BigDecimal generatePi(long iterations) {
 		System.out.println("Inside Gregory's algorithm.");
-		BigDecimal pi = new BigDecimal(1.0);
+		BigDecimal pi = new BigDecimal("1.0");
 		int flag = 1;
 
 

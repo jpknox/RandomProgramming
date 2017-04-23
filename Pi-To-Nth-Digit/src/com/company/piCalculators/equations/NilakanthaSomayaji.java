@@ -12,7 +12,7 @@ public class NilakanthaSomayaji implements piGenerator {
 	@Override
 	public BigDecimal generatePi(long iterations) {
 		System.out.println("Inside Nilakantha's algorithm.");
-		BigDecimal pi = new BigDecimal(3.0);
+		BigDecimal pi = new BigDecimal("3.0");
 		int flag = 1;
 		long firstDenominator = 2;
 		long secondDenominator = 3;

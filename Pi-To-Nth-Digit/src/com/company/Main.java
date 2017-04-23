@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 public class Main {
 
-	private static final long n = 1000000L;
+	private static final long n = 10000000L;
 
     public static void main(String[] args) {
 		PiCalculator piCalculator = new PiCalculator();
