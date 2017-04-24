@@ -8,6 +8,8 @@ import main.model.observe.implementation.Subject;
  */
 public class ObserverPatternStarter {
 
+
+    //This program demonstrates my interpretation of the Observer pattern.
     public static void main(String[] args) {
         Subject subject = new Subject();
 
