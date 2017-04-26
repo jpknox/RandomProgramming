@@ -1,25 +1,14 @@
 package main.model.observe.implementation;
 
-import main.model.observe.interfaces.IObservable;
-import main.model.observe.interfaces.IObserver;
+import main.model.observe.interfaces.AObservable;
+import main.model.observe.interfaces.AObserver;
 
 /**
  * Created by joaok on 24/04/2017.
  */
-public class Observer implements IObserver {
+public class Observer extends AObserver {
 
-    private String name;
-    private IObservable subject;
-
-    public Observer(String name, Subject subject) {
-        this.name = name;
-        this.subject = subject;
-        subject.subscribe(this);
-    }
-
-    @Override
-    public int update() {
-        System.out.println("My name is " + name + ".");
-        return 0;
+    public Observer(String name, AObservable subject) {
+        super(name, subject);
     }
 }
