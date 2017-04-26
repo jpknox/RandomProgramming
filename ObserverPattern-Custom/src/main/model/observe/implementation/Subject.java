@@ -1,7 +1,7 @@
 package main.model.observe.implementation;
 
-import main.model.observe.interfaces.Observable;
-import main.model.observe.interfaces.Subscribable;
+import main.model.observe.interfaces.IObserver;
+import main.model.observe.interfaces.IObservable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,30 +9,30 @@ import java.util.Iterator;
 /**
  * Created by joaok on 24/04/2017.
  */
-public class Subject implements Subscribable {
+public class Subject implements IObservable {
 
-    private ArrayList<Observable> observers;
+    private ArrayList<IObserver> observers;
 
     public Subject() {
-        observers = new ArrayList<Observable>();
+        observers = new ArrayList<IObserver>();
     }
 
     @Override
-    public int subscribe(Observable observer) {
+    public int subscribe(IObserver observer) {
         observers.add(observer);
         return 0;
     }
 
     @Override
-    public int unsubscribe(Observable observer) {
+    public int unsubscribe(IObserver observer) {
         observers.remove(observer);
         return 0;
     }
 
     @Override
     public int notifyObservers() {
-        for (Iterator<Observable> observerIterator = observers.iterator(); observerIterator.hasNext();) {
-            Observable observer = observerIterator.next();
+        for (Iterator<IObserver> observerIterator = observers.iterator(); observerIterator.hasNext();) {
+            IObserver observer = observerIterator.next();
             observer.update();
         }
         return 0;

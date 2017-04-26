@@ -13,13 +13,9 @@ public class ObserverPatternStarter {
     public static void main(String[] args) {
         Subject subject = new Subject();
 
-        Observer observer0 = new Observer("Jeff");
-        Observer observer1 = new Observer("Benjamin");
-        Observer observer2 = new Observer("Kyle");
-
-        subject.subscribe(observer0);
-        subject.subscribe(observer1);
-        subject.subscribe(observer2);
+        Observer observer0 = new Observer("Jeff", subject);
+        Observer observer1 = new Observer("Benjamin", subject);
+        Observer observer2 = new Observer("Kyle", subject);
 
         subject.notifyObservers();
     }
