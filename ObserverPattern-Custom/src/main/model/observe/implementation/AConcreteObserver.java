@@ -6,9 +6,9 @@ import main.model.observe.interfaces.AObserver;
 /**
  * Created by joaok on 24/04/2017.
  */
-public class Observer extends AObserver {
+public class AConcreteObserver extends AObserver {
 
-    public Observer(String name, AObservable subject) {
+    public AConcreteObserver(String name, AObservable subject) {
         super(name, subject);
     }
 }
