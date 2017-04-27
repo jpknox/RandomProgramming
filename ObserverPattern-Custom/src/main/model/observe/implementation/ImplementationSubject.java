@@ -61,4 +61,8 @@ public class ImplementationSubject implements ISubject {
     public int getState() {
         return this.data;
     }
+
+    public boolean checkObserver(IObserver observer) {
+        return observers.contains(observer);
+    }
 }

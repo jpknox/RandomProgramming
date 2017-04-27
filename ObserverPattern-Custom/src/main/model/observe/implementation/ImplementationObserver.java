@@ -18,10 +18,19 @@ public class ImplementationObserver implements IObserver {
         this.subject.registerObserver(this);
     }
 
+    public ImplementationObserver(String nameParam) {
+        this.name = nameParam;
+    }
+
     @Override
     public int update(int dataParam) {
         this.data = dataParam;
         System.out.printf("Hi I'm %s, and my new data is %d\n", name, data);
+        return 0;
+    }
+
+    public int setSubject(ISubject subjectParam) {
+        this.subject = subjectParam;
         return 0;
     }
 }
