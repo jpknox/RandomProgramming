@@ -37,6 +37,13 @@ public class ImplementationSubject implements ISubject {
         return 0;
     }
 
+    /**
+     * Sets the subjects data, and then propagates it by calling
+     * the setState() method.
+     *
+     * @param dataParam The data to propagate out to all observers.
+     * @return 0, which indicates success.
+     */
     @Override
     public int setState(int dataParam) {
         this.data = dataParam;
@@ -44,6 +51,12 @@ public class ImplementationSubject implements ISubject {
         return 0;
     }
 
+    /**
+     * Returns the data that the subject is currently
+     * holding on to.
+     *
+     * @return The data currently stored in the subject.
+     */
     @Override
     public int getState() {
         return this.data;
