@@ -59,7 +59,9 @@ public class Controller implements Initializable {
 	}
 
 	public void handleResetButtonAction(ActionEvent actionEvent) {
-		System.out.println("Pressed reset");
+		System.out.println("Clear list");
+		dataListItems.remove(0, dataListItems.size());
+		quantityOfEntries = 0;
 	}
 
 
