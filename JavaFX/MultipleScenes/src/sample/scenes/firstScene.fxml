@@ -12,7 +12,7 @@
       <top>
         <HBox prefHeight="100.0" prefWidth="200.0">
           <children>
-            <Button mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS">
+            <Button mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS" fx:id="nameButton" onAction="#notifyNameAction">
               <HBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
               </HBox.margin>
