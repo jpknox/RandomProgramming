@@ -38,6 +38,11 @@ public class Controller {
 		resetOtherButtonsText((Button) actionEvent.getSource());
 	}
 
+	public void handleResetButtonAction(ActionEvent actionEvent) {
+		System.out.println("Pressed reset");
+		resetOtherButtonsText((Button) actionEvent.getSource());
+	}
+
 	private int resetOtherButtonsText(Button callingButton) {
 		String defaultBtnText = "Button";
 		switch (callingButton.getId()) {
@@ -53,8 +58,15 @@ public class Controller {
 				nameButton.setText(defaultBtnText);
 				townButton.setText(defaultBtnText);
 				break;
+			default:
+				nameButton.setText(defaultBtnText);
+				townButton.setText(defaultBtnText);
+				boroughButton.setText(defaultBtnText);
+				break;
 		}
 
 		return 0;
 	}
+
+
 }

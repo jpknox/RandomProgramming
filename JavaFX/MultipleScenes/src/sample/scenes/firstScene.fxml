@@ -40,6 +40,13 @@
 					</padding>
 				</HBox>
 			</top>
+         <bottom>
+            <Button fx:id="resetButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleResetButtonAction" text="Button" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="12.0" top="12.0" />
+               </padding>
+            </Button>
+         </bottom>
 		</BorderPane>
 	</children>
 </AnchorPane>
