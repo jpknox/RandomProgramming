@@ -7,11 +7,12 @@ import javafx.scene.control.Button;
 public class Controller {
 
 	@FXML
-	Button nameButton;
+	Button nameButton; //The fx:id attribute within the FXML links to the identical name of this button variable.
 
-
-
-	public void notifyNameAction(ActionEvent actionEvent) {
-		System.out.println("Joao Paulo Knox");
+	@FXML  //The @FXML annotation allows this method to be referenced from the FXML within an attribute of an element.
+	private void  handleNameButtonAction(ActionEvent action) {
+		String name = "Joao Paulo Knox";
+		System.out.println(name);
+		nameButton.setText(name);  //Using the @FXML injection above the button is accessed.
 	}
 }
