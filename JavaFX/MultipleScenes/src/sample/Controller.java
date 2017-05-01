@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,13 +22,13 @@ public class Controller implements Initializable {
 	private Button townButton;
 
 	@FXML
-	private Button boroughButton;
-	
+	public TextField entryTextField;
+
 	@FXML
 	private ListView dataListGeneral;
 
 	private ObservableList<String> dataListItems = FXCollections.observableArrayList();
-	private int i = 1;
+	private int quantityOfEntries = 0;
 
 
 	@Override
@@ -37,52 +38,28 @@ public class Controller implements Initializable {
 
 	@FXML  //The @FXML annotation allows this method to be referenced from the FXML within an attribute of an element.
 	private void handleAddButtonAction(ActionEvent action) {
-		System.out.println(String.format("Add %d", i));
-		dataListItems.add(String.format("Item %d", i));
-		++i;
-//		dataListGeneral.
+		String entryText = entryTextField.getText();
+		if ( !(entryText != null && !entryText.isEmpty()) ) return;
+
+		System.out.println(String.format("Add %s", entryText));
+		dataListItems.add(entryText);
+		quantityOfEntries++;
 	}
 
 
 	public void handleRemoveButtonAction(ActionEvent actionEvent) {
-		if (i > 0) dataListItems.remove(String.format("Item %d", --i));
-	}
+		String entryText = entryTextField.getText();
+		if (quantityOfEntries == 0 || entryText == null || entryText.isEmpty()) return;
 
-	public void handleBoroughButtonAction(ActionEvent actionEvent) {
-		String borough = "Gloucestershire";
-		System.out.println(borough);
-		boroughButton.setText(borough);
-		resetOtherButtonsText((Button) actionEvent.getSource());
+		System.out.println(String.format("Remove all occurrences of %s", entryText));
+		while (dataListItems.contains(entryText)) {
+			dataListItems.remove(entryText);
+			quantityOfEntries--;
+		}
 	}
 
 	public void handleResetButtonAction(ActionEvent actionEvent) {
 		System.out.println("Pressed reset");
-		resetOtherButtonsText((Button) actionEvent.getSource());
-	}
-
-	private int resetOtherButtonsText(Button callingButton) {
-		String defaultBtnText = "Button";
-		switch (callingButton.getId()) {
-			case "nameButton":
-				townButton.setText(defaultBtnText);
-				boroughButton.setText(defaultBtnText);
-				break;
-			case "townButton":
-				nameButton.setText(defaultBtnText);
-				boroughButton.setText(defaultBtnText);
-				break;
-			case "boroughButton":
-				nameButton.setText(defaultBtnText);
-				townButton.setText(defaultBtnText);
-				break;
-			default:
-				nameButton.setText(defaultBtnText);
-				townButton.setText(defaultBtnText);
-				boroughButton.setText(defaultBtnText);
-				break;
-		}
-
-		return 0;
 	}
 
 
