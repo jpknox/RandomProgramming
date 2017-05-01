@@ -7,28 +7,36 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111"
-			xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
 	<children>
 		<BorderPane layoutX="0.0" layoutY="0.0" prefHeight="500.0" prefWidth="500.0" visible="true">
 			<top>
 				<HBox prefHeight="100.0" prefWidth="200.0">
 					<children>
-						<Button fx:id="nameButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-								onAction="#handleNameButtonAction" text="Button">
-							<HBox.margin>
-								<Insets/>
-							</HBox.margin>
-						</Button>
-						<Region HBox.hgrow="ALWAYS"/>
-						<Button fx:id="townButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-								onAction="#handleTownButtonAction" text="Button"/>
-						<Region HBox.hgrow="ALWAYS"/>
-						<Button fx:id="boroughButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-								onAction="#handleBoroughButtonAction" text="Button"/>
+                  <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+      						<Button fx:id="nameButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNameButtonAction" text="Button">
+      							<HBox.margin>
+      								<Insets />
+      							</HBox.margin>
+      						</Button>
+      						<Region HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+      						<Button fx:id="townButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleTownButtonAction" text="Button" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+      						<Region HBox.hgrow="ALWAYS" />
+      						<Button fx:id="boroughButton" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBoroughButtonAction" text="Button" />
+                     </children>
+                  </HBox>
 					</children>
 					<padding>
-						<Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+						<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
 					</padding>
 				</HBox>
 			</top>
