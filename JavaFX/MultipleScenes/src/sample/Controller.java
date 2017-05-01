@@ -1,34 +1,51 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-	@FXML
-	Button nameButton; //The fx:id attribute within the FXML links to the identical name of this button variable.
-
-	@FXML
-	Button townButton;
+public class Controller implements Initializable {
 
 	@FXML
-	Button boroughButton;
+	private Button nameButton; //The fx:id attribute within the FXML links to the identical name of this button variable.
 
-	@FXML  //The @FXML annotation allows this method to be referenced from the FXML within an attribute of an element.
-	private void  handleNameButtonAction(ActionEvent action) {
-		String name = "Joao Paulo Knox";
-		System.out.println(name);
-		nameButton.setText(name);  //Using the @FXML injection above the button is accessed.
-		resetOtherButtonsText((Button) action.getSource());
+	@FXML
+	private Button townButton;
+
+	@FXML
+	private Button boroughButton;
+	
+	@FXML
+	private ListView dataListGeneral;
+
+	private ObservableList<String> dataListItems = FXCollections.observableArrayList();
+	private int i = 1;
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		dataListGeneral.setItems(dataListItems);
 	}
 
-	public void handleTownButtonAction(ActionEvent actionEvent) {
-		String town = "Cheltenham";
-		System.out.println(town);
-		townButton.setText(town);
-		resetOtherButtonsText((Button) actionEvent.getSource());
+	@FXML  //The @FXML annotation allows this method to be referenced from the FXML within an attribute of an element.
+	private void handleAddButtonAction(ActionEvent action) {
+		System.out.println(String.format("Add %d", i));
+		dataListItems.add(String.format("Item %d", i));
+		++i;
+//		dataListGeneral.
+	}
 
+
+	public void handleRemoveButtonAction(ActionEvent actionEvent) {
+		if (i > 0) dataListItems.remove(String.format("Item %d", --i));
 	}
 
 	public void handleBoroughButtonAction(ActionEvent actionEvent) {
