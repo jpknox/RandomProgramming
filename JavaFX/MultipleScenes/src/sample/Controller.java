@@ -6,9 +6,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -62,6 +66,10 @@ public class Controller implements Initializable {
 		System.out.println("Clear list");
 		dataListItems.remove(0, dataListItems.size());
 		quantityOfEntries = 0;
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(new Pane()));
+        currentStage.show();
+
 	}
 
 
