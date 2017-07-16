@@ -14,6 +14,9 @@ public class Main {
         System.out.println("Create file");
         getTxtFile();
         writeToFile(getTxtFile());
+
+        String parentOfTextFile = getTxtFile().getParent();
+        System.out.println("Parent of text file: " + parentOfTextFile + ".");
     }
 
     private static void printMap(Map<String, String> mapToPrint, String descriptor) {
